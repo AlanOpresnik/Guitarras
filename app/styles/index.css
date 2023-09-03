@@ -101,7 +101,9 @@ main {
 .footer {
     background-color: var(--black);
     padding: 5rem 0;
+    position: relative;
     margin-top: 5rem;
+    bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -137,3 +139,40 @@ main {
     color: white;
 }
 
+.error{
+    margin-top: 5rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.error__link{
+    color: var(--primary);
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+.error__div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ .enlace {
+    margin-top: 2rem ;
+    display: block;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    padding: .5rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 900;
+    transition-property: background-color;
+    transition-duration: 300ms;
+}
+
+.enlace:hover{
+    background-color: var(--primary);
+}

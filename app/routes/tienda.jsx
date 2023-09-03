@@ -23,10 +23,12 @@ export function links() {
 
 export async function loader() {
   const guitarras = await getGuitarras();
+  
   return guitarras.data;
 }
 const Tienda = () => {
   const guitarras = useLoaderData();
+
   return (
     <main className="contenedor">
       <h2 className="heading">nuestra coleccion</h2>

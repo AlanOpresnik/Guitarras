@@ -20,6 +20,8 @@
     grid-template-columns: 2fr 3fr;
     gap: 1rem;
     align-items: center;
+    max-width: 60rem;
+    margin: 0 auto;
 }
 
 .guitarra .contenido{
@@ -47,21 +49,5 @@
     font-weight: 900;
 }
 
-.guitarra .enlace {
-    margin-top: 2rem ;
-    display: block;
-    background-color: black;
-    color: white;
-    text-decoration: none;
-    padding: .5rem;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 1.4rem;
-    font-weight: 900;
-    transition-property: background-color;
-    transition-duration: 300ms;
-}
 
-.guitarra .enlace:hover{
-    background-color: var(--primary);
-}
+

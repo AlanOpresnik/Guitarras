@@ -1,73 +1,93 @@
 import {
- Meta,
- Links,
- Outlet,
- Scripts,
- LiveReload,
-} from "@remix-run/react"
-import styles from "./styles/index.css"
-import Header from "./components/header"
-import Footer from "./components/footer"
-
+  Meta,
+  Links,
+  Outlet,
+  Scripts,
+  LiveReload,
+  useCatch,
+  useRouteError,
+  isRouteErrorResponse,
+  Link,
+} from "@remix-run/react";
+import styles from "./styles/index.css";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 export function meta() {
-    return(
-        [
-            {
-                charset: 'utf8',
-                title: "guitarLa remix",
-                viewport: "width=device-width,initial-scale=1"
-            }
-        ]
-    )
+  return [
+    {
+      charset: "utf8",
+      title: "guitarLa remix",
+      viewport: "width=device-width,initial-scale=1",
+    },
+  ];
 }
 
 export function links() {
-    return [
-        {
-            rel: "stylesheet",
-            href: "https://necolas.github.io/normalize.css/8.0.1/normalize.css"
-        },
-        {
-            rel: 'stylesheet',
-            href: styles
-        },{
-            rel: "preconnect",
-            href: "https://fonts.googleapis.com"
-        },
-        {
-            rel: "preconnect",
-            href: "https://fonts.gstatic.com",
-            crossOrigin: "true"
-        },{
-            rel: "stylesheet",
-            href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap"
-        }
-    ]
+  return [
+    {
+      rel: "stylesheet",
+      href: "https://necolas.github.io/normalize.css/8.0.1/normalize.css",
+    },
+    {
+      rel: "stylesheet",
+      href: styles,
+    },
+    {
+      rel: "preconnect",
+      href: "https://fonts.googleapis.com",
+    },
+    {
+      rel: "preconnect",
+      href: "https://fonts.gstatic.com",
+      crossOrigin: "true",
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap",
+    },
+  ];
 }
 
 export default function app() {
-  return(
+  return (
     <Document>
-        <Outlet />
+      <Outlet />
     </Document>
   );
 }
 
-function Document ({children}) {
+function Document({ children }) {
+  return (
+    <html lang="es">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Header />
+        {children}
+        <Footer />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  if (isRouteErrorResponse(error)) {
     return (
-        <html lang="es">
-            <head>
-                <Meta/>
-                <Links/>
-            </head>
-            <body>
-            <Header/>
-                {children}
-            <Footer/>
-                <Scripts/>
-                <LiveReload/>
-            </body>
-        </html>
-    )
+      <Document>
+      <div className="error__div">
+        <p className="error">
+          {error.statusText}
+        </p>
+        <Link className="error__link" to='/' >Aqui no esta lo que buscas regresa a la pagina principal</Link>
+        </div>
+      </Document>
+    );
+  }
 }
