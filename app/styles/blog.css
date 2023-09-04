@@ -16,7 +16,8 @@
 }
 
 .post{
-
+    max-width: 80rem;
+    margin: 2rem auto;
 }
 
 .post .contenido{
@@ -34,4 +35,15 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     overflow: hidden;
+}
+
+.fecha{
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.post__url{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

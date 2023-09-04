@@ -2,6 +2,7 @@ import Post from "../components/post";
 import { getPosts } from "../models/post.server";
 import { useLoaderData } from "@remix-run/react";
 import style from '../styles/blog.css'
+import ListadoPosts from "../components/listadoPosts";
 
 export function links() {
   return [
@@ -19,14 +20,11 @@ export async function loader() {
 const Blog = () => {
   const posts = useLoaderData();
   return (
-    <main className="contenedor">
-      <h2 className="heading">Blog</h2>
-      <div className="blog">
-        {posts.map((post) => (
-          <Post post={post} />
-        ))}
-      </div>
-    </main>
+    <div>
+      <h1 className="heading">Blog</h1>
+      <ListadoPosts posts={posts}/>
+    </div>
+
   );
 };
 
