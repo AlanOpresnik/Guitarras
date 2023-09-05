@@ -70,6 +70,7 @@ main {
 
 .header .navegacion {
     display: flex;
+    align-items: center;
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -96,6 +97,9 @@ main {
     }
 }
 
+.header .navegacion img {
+    width: 3rem;
+}
 /*footer*/
 
 .footer {
@@ -125,6 +129,10 @@ main {
     font-size: 2rem;
     text-decoration: none;
     font-weight: 700;
+}
+
+.footer .navegacion a:last-of-type{
+    display: none   ;
 }
 
 @media (min-width: 768px) {

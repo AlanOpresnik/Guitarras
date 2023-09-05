@@ -6,7 +6,7 @@ const ListadoPosts = ({posts}) => {
          <main className="contenedor">
       <div className="blog">
         {posts.map((post) => (
-          <Post post={post} />
+          <Post key={post.id} post={post} />
         ))}
       </div>
     </main>

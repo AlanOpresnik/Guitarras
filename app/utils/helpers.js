@@ -7,5 +7,5 @@ export const formatearFecha = (fecha) => {
         year: 'numeric'
     }
 
-    return fechaNueva.toLocaleDateString('en-US', opciones)
+    return fechaNueva.toLocaleDateString('es-es', opciones)
 }

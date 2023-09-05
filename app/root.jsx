@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import {
   Meta,
   Links,
@@ -12,6 +14,7 @@ import {
 import styles from "./styles/index.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Guitarra from "./components/guitarra";
 
 export function meta() {
   return [
@@ -50,9 +53,61 @@ export function links() {
 }
 
 export default function app() {
+  const carritoLS =  typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('carrito')) ?? [] : null;
+  const [carrito, setCarrito] = useState(carritoLS);
+
+
+  useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito)); 
+  }, [carrito])
+  
+
+
+  const agregarCarrito = (guitarra) => {
+    if (carrito.some((guitarraState) => guitarraState.id === guitarra.id)) {
+      console.log("ese eleemtno ya existe");
+      const carritoActualizado = carrito.map((guitarraState) => {
+        if (guitarraState.id === guitarra.id) {
+          guitarraState.cantidad = guitarra.cantidad;
+        }
+        return guitarraState;
+      });
+      setCarrito(carritoActualizado);
+    } else {
+      console.log("agregando", guitarra);
+
+      setCarrito([...carrito, guitarra]);
+    }
+  };
+
+  const actualizarCantidad = (guitarra) => {
+    const carritoActualizado = carrito.map((guitarraState) => {
+      if (guitarraState.id === guitarra.id) {
+        guitarraState.cantidad = guitarra.cantidad;
+      }
+      return guitarraState;
+    });
+    setCarrito(carritoActualizado);
+  }
+
+  const eliminarProduto = (guitarra) => {
+    const carritoActualizado = carrito.filter((guitarraState) => guitarraState.id!== guitarra.id);
+    setCarrito(carritoActualizado);
+  }
+
+
+
+
   return (
     <Document>
-      <Outlet />
+      <Outlet
+        context={{
+          agregarCarrito,
+          carrito,
+          actualizarCantidad,
+          eliminarProduto,
+        }}
+      />
     </Document>
   );
 }
@@ -75,17 +130,16 @@ function Document({ children }) {
   );
 }
 
-
 export function ErrorBoundary() {
   const error = useRouteError();
   if (isRouteErrorResponse(error)) {
     return (
       <Document>
-      <div className="error__div">
-        <p className="error">
-          {error.statusText}
-        </p>
-        <Link className="error__link" to='/' >Aqui no esta lo que buscas regresa a la pagina principal</Link>
+        <div className="error__div">
+          <p className="error">{error.statusText}</p>
+          <Link className="error__link" to="/">
+            Aqui no esta lo que buscas regresa a la pagina principal
+          </Link>
         </div>
       </Document>
     );

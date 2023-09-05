@@ -1,10 +1,10 @@
 import {Link} from '@remix-run/react'
 import { formatearFecha } from '../utils/helpers';
 const Post = ({post}) => {
-    const {contenido, imagen, titulo, url, publishedAt} = post.attributes;
+    const {contenido, imagen, titulo, url, publishedAt, id} = post.attributes;
     
   return (
-    <article className='post'>
+    <article key={id} className='post'>
      <img src={imagen.data.attributes.formats.medium.url} />
      <h2>{titulo}</h2>
      <p className="fecha">{formatearFecha(publishedAt)}</p>

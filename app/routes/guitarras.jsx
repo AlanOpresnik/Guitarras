@@ -1,5 +1,5 @@
 import styles from "../styles/guitarras.css";
-import { useLoaderData } from "@remix-run/react";
+import { Outlet, useLoaderData, useOutletContext } from "@remix-run/react";
 import { getGuitarras } from "../models/guitarras.server";
 import ListadoGuitarras from "../components/listadoGuitarras";
 
@@ -29,7 +29,12 @@ export async function loader() {
 const Tienda = () => {
   const guitarras = useLoaderData();
 
-  return   <ListadoGuitarras guitarras={guitarras} />;
+  return  (
+    <>
+    <ListadoGuitarras guitarras={guitarras} />
+     <Outlet context={useOutletContext}/>
+     </>
+  )
 };
 
 export default Tienda;
