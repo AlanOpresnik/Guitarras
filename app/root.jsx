@@ -21,7 +21,8 @@ export function meta() {
     {
       charset: "utf8",
       title: "guitarLa remix",
-      viewport: "width=device-width,initial-scale=1",
+      viewport: "width=device-width, initial-scale=1.0"
+
     },
   ];
 }
