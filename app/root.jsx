@@ -18,7 +18,7 @@ import Footer from "./components/footer";
 export function meta() {
   return [
     {
-      name:"viewport content:width=device-width, initial-scale=1",
+      name:"viewport" ,content:"width=device-width, initial-scale=1",
       charset: "utf8",
       title: "guitarLa remix"
     }
