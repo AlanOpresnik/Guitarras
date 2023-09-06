@@ -23,6 +23,7 @@ export function meta({ data }) {
     return [
       {
         title: `GuitarLa Guitarra no encontrada`,
+        viewport: "width=device-width, initial-scale=1.0"
       },
     ];
   }

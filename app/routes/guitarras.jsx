@@ -8,6 +8,7 @@ export function meta() {
     {
       title: "GuitarLa - Tienda",
       description: "GuitarLa la tienda con las mejores guitarras ",
+      viewport: "width=device-width, initial-scale=1.0"
     },
   ];
 }

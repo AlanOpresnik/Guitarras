@@ -15,6 +15,7 @@ export function meta() {
   return [
     {
       title: "GuitarLa - finalizar compra",
+      viewport: "width=device-width, initial-scale=1.0"
     },
   ];
 }
