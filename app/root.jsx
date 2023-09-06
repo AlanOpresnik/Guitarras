@@ -14,13 +14,11 @@ import {
 import styles from "./styles/index.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import Guitarra from "./components/guitarra";
 
 export function meta() {
   return [
     {
-      name: "viewport",
-      content: "width=device-width, initial-scale=1",
+
       charset: "utf8",
       title: "guitarLa remix"
     }
@@ -51,6 +49,10 @@ export function links() {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap",
     },
+    {
+      rel: "viewport",
+      content: "width=device-width, initial-scale=1",
+    }
   ];
 }
 
